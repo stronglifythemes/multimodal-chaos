@@ -1,0 +1,828 @@
+<!DOCTYPE html><html lang="en"><head>
+	
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width"/>
+<meta name="builder" content="Stronglify"/>
+<link rel="icon" type="image/x-icon" href="https://media.stronglify.com/295/favicon-1790726043-1791468574.svg"/>
+<title>Multimodal Report — Level 10 Chaos</title>
+<meta name="description" content="An interactive retro CRT report with pixel art, draggable stickers, a mountain chart, beach mode, an alien flight, and a movie."/>
+<meta name="robots" content="index"/>
+<link rel="canonical" href="https://stronglifythemes.github.io/"/><style>
+:root { font-family: 'Barlow Condensed', Impact, sans-serif; color: #080708; background: #27261e; }
+    * { box-sizing: border-box; }
+    body { margin: 0; min-height: 100vh; display: grid; place-items: center; overflow: hidden; background: radial-gradient(ellipse at center, #55513a, #25241c 75%); }
+    button { font: inherit; cursor: pointer; }
+    .viewport { width: 1200px; height: 850px; flex: none; transform-origin: center center; }
+    .monitor { width: 1200px; height: 850px; position: relative; border-radius: 42px; padding: 45px 48px 39px; background: linear-gradient(135deg, #37352b 0%, #0f1110 9%, #0c0c0a 84%, #4a4434 100%); box-shadow: inset 10px 9px 17px #77705a66, inset -13px -12px 24px #000, 0 26px 35px #0009, 0 0 0 3px #403c2d; }
+    .monitor:before { content: ''; position: absolute; inset: 15px; border-radius: 31px; border: 5px solid #0008; box-shadow: inset 0 0 17px #000e; pointer-events: none; }
+    .screen { position: relative; width: 1104px; height: 766px; overflow: hidden; border: 10px solid #050506; border-radius: 30px 30px 26px 26px; background: #68aebe; box-shadow: inset 0 0 40px #022e3cbb, 0 0 2px 5px #161712; }
+    .screen:before { content: ''; position: absolute; inset: 0; z-index: 0; opacity: .35; background: repeating-linear-gradient(140deg, transparent 0 31px, #976bc5 32px 43px, transparent 44px 77px), repeating-linear-gradient(40deg, transparent 0 31px, #976bc5 32px 43px, transparent 44px 77px); background-size: 114px 95px; }
+    .screen:after { content: ''; position: absolute; inset: 0; z-index: 20; pointer-events: none; background: repeating-linear-gradient(to bottom, #0000 0 2px, #001b2c13 3px 4px), radial-gradient(ellipse at center, transparent 45%, #00182266 100%); mix-blend-mode: multiply; }
+    .screen[data-search-type="web"] { background: linear-gradient(145deg, #62d3e6, #b5f4e3 54%, #6daed6); }
+    .screen[data-search-type="web"]:before { opacity: .46; background: linear-gradient(90deg, #ffffffaa 2px, transparent 2px), linear-gradient(#ffffffaa 2px, transparent 2px), radial-gradient(circle at 72% 28%, #f8ffb6, transparent 35%); background-size: 54px 54px, 54px 54px, 100% 100%; }
+    .screen[data-search-type="text-based"] { background: linear-gradient(135deg, #e6d6ad, #faf0cc 55%, #b9d7ce); }
+    .screen[data-search-type="text-based"]:before { opacity: .5; background: linear-gradient(90deg, transparent 0 78px, #cf7482 80px 82px, transparent 84px), repeating-linear-gradient(0deg, transparent 0 28px, #6b8cac99 29px 30px); }
+    .screen[data-search-type="image"] { background: linear-gradient(135deg, #ffb6d5, #b9edeb 48%, #c0a9ec); }
+    .screen[data-search-type="image"]:before { opacity: .4; background: conic-gradient(from 45deg at 50% 50%, #fff9 0 25%, transparent 0 50%, #fff9 0 75%, transparent 0); background-size: 108px 108px; }
+    .screen[data-search-type="video"] { background: radial-gradient(circle at 48% 25%, #e66db8, #344e92 55%, #121d52 100%); }
+    .screen[data-search-type="video"]:before { opacity: .45; background: repeating-linear-gradient(90deg, #060c35 0 17px, transparent 18px 102px, #060c35 103px 119px), repeating-linear-gradient(0deg, #0000 0 64px, #90dbff99 65px 68px, #0000 69px 132px); background-size: 120px 132px; }
+    .screen[data-search-type="video"] .reset { color: #fff; text-shadow: 1px 2px #17265b; }
+    .screen[data-search-type="news"] { background: linear-gradient(140deg, #f2e2b7, #c8b989 58%, #e8dcb4); }
+    .screen[data-search-type="news"]:before { opacity: .37; background: repeating-linear-gradient(90deg, transparent 0 171px, #5e513c 172px 174px, transparent 175px 205px), repeating-linear-gradient(0deg, #362e2933 0 2px, transparent 3px 9px); background-size: 205px 100%, 100% 9px; }
+    .screen.big-bang-mode { background: radial-gradient(circle at 12% 72%, #ffb46b 0%, #b148a4 18%, #4b348a 48%, #101947 78%, #080f2e 100%); }
+    .screen.big-bang-mode:before { opacity: .8; background: radial-gradient(circle, #fff9 0 2px, transparent 3px), radial-gradient(circle, #bdeaff 0 1px, transparent 2px), radial-gradient(circle, #ffe59c 0 1px, transparent 2px); background-size: 97px 83px, 61px 71px, 137px 111px; background-position: 0 0, 28px 23px, 55px 31px; animation: cosmos-drift 18s linear infinite; }
+    .big-bang-mode .chart { background: radial-gradient(circle at 10% 80%, #ffe3bb, #dbc5f1 35%, #b7d8f0 100%); border-color: #44208b; outline-color: #ef7dd0; }
+    .big-bang-mode .stat-strip { background: linear-gradient(90deg, #ffa5b8, #a881db 55%, #6ea6d8); }
+    .big-bang-mode .levels { background: #c9b9df; }
+    .big-bang-mode .reset { color: #fff; text-shadow: 1px 2px #1c174c; }
+    .big-bang-mode .progress { background: linear-gradient(90deg, #ffb33f, #d254b2 25%, #8251c7 58%, #4e8bdb); }
+    @keyframes cosmos-drift { to { background-position: 97px 83px, -33px 94px, 192px 142px; } }
+    .masthead { position: absolute; z-index: 2; top: 3px; left: 15px; width: 1058px; text-align: center; }
+    h1, .subtitle { font-family: Anton, Impact, sans-serif; text-transform: uppercase; margin: 0; letter-spacing: -1.5px; -webkit-text-stroke: 2.5px #030308; paint-order: stroke fill; filter: drop-shadow(5px 5px 0 #090411); white-space: nowrap; background: linear-gradient(180deg, #20e9da 5%, #41f6a9 26%, #f4e44b 48%, #f98852 72%, #d640e9 97%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    h1 { font-size: 50px; line-height: 1; transform: scaleX(.91) scaleY(1.65); transform-origin: top center; }
+    .subtitle { position: absolute; top: 94px; left: 0; width: 100%; font-size: 43px; line-height: 1.1; transform: scaleX(.95); }
+    .toolbar { position: absolute; z-index: 4; top: 158px; left: 17px; right: 64px; height: 40px; display: flex; align-items: center; gap: 8px; white-space: nowrap; }
+    .retro-button, .select-button { height: 35px; padding: 1px 10px 3px; border: 2px solid #1d1d20; background: linear-gradient(#f4f3e9, #c7c9c2); box-shadow: inset 2px 2px #fff, inset -2px -2px #7f8382, 2px 3px 0 #17171b; font-weight: 800; font-size: 21px; line-height: 1; color: #151515; }
+    .retro-button.active { background: linear-gradient(#e7dbff, #b69bdc); }
+    .retro-button:hover, .select-button:hover { filter: brightness(1.1); }
+    .range-button { position: relative; min-width: 87px; overflow: hidden; border: 2px solid #070b24; border-radius: 6px; background: linear-gradient(180deg, #394379, #182347 52%, #0b1435); color: #fff9cf; text-shadow: 1px 2px #050918; box-shadow: inset 2px 2px #a3a9e0, inset -2px -2px #070b25, 2px 4px 0 #140a20; transition: transform .16s, box-shadow .16s, background .16s; }
+    .range-button:after { content: ''; position: absolute; left: 8px; right: 8px; bottom: 3px; height: 3px; border-radius: 5px; background: var(--range-color); box-shadow: 0 0 7px var(--range-color); }
+    .range-button:nth-child(1) { --range-color: #39eacb; }
+    .range-button:nth-child(2) { --range-color: #ffe564; }
+    .range-button:nth-child(3) { --range-color: #ff78bd; }
+    .range-button:nth-child(4) { --range-color: #80b8ff; }
+    .range-button:hover { transform: translateY(-2px); box-shadow: inset 2px 2px #c7c8ff, inset -2px -2px #070b25, 2px 6px 0 #140a20, 0 0 12px var(--range-color); }
+    .range-button.active { transform: translateY(2px); background: linear-gradient(160deg, #fff080, #ff9aab 54%, #bd69de); color: #100d25; text-shadow: 1px 1px #fff7bd; box-shadow: inset 2px 2px #fffbd7, inset -2px -2px #743087, 1px 2px 0 #140a20, 0 0 14px var(--range-color); }
+    .range-button.active:hover { transform: translateY(1px); }
+    .range-button:focus-visible { outline: 3px solid #eaffff; outline-offset: 2px; }
+    .beach-mode .range-button:not(.active) { background: linear-gradient(180deg, #137a9e, #07566b); }
+    .more-wrap { position: relative; flex: none; }
+    .more-button { min-width: 68px; padding-inline: 6px; --range-color: #d78bff !important; }
+    .more-menu { position: absolute; z-index: 10; top: 43px; left: 0; display: grid; gap: 5px; width: 148px; padding: 7px; border: 3px solid #130a2a; border-radius: 7px; background: linear-gradient(160deg, #333773, #17103f); box-shadow: inset 2px 2px #9f96d6, 5px 6px #090a18a8; }
+    .more-option { padding: 4px 8px; border: 2px solid #150f30; border-radius: 4px; background: #fff4bd; color: #201337; text-align: left; font-size: 19px; font-weight: 800; box-shadow: 2px 2px #0b0a18; }
+    .more-option:hover, .more-option:focus-visible { background: #ff9fe0; outline: none; transform: translateX(2px); }
+    .select-button { margin-left: 2px; min-width: 224px; text-align: left; display: flex; align-items: center; justify-content: space-between; }
+    .select-button .truncate { display: block; width: 190px; overflow: hidden; text-overflow: ellipsis; }
+    .add-filter { min-width: 111px; }
+    .filter-icon { height: 35px; width: 36px; margin-left: 1px; color: #fff; font-size: 29px; line-height: 24px; background: #06448b; border: 3px solid #0c1a38; box-shadow: inset 2px 2px #87b1ee, 2px 3px 0 #17171b; }
+    .filter-icon[aria-pressed="true"] { background: #e6a83e; border-color: #764318; box-shadow: inset 2px 2px #fff4a3, 2px 3px 0 #17171b, 0 0 12px #ffe76b; }
+    .reset { border: 0; background: none; font-weight: 700; font-size: 20px; color: #111e2b; padding: 0; text-shadow: 1px 1px #b7e8ee; }
+    .stat-strip { position: absolute; z-index: 3; left: 9px; top: 221px; width: 755px; height: 109px; background: linear-gradient(90deg, #cda6e7, #8bddea 55%, #b89cde); border: 3px solid #17111c; box-shadow: 2px 3px 0 #fff, inset 2px 2px #e5c9ff; }
+    .badge { position: absolute; top: -19px; display: grid; place-content: center; text-align: center; width: 142px; height: 142px; border: 4px solid #17111d; border-radius: 50%; clip-path: polygon(50% 0, 57% 4%, 65% 1%, 70% 7%, 79% 6%, 82% 13%, 90% 16%, 91% 24%, 98% 29%, 96% 37%, 100% 45%, 96% 53%, 99% 61%, 94% 68%, 94% 77%, 86% 81%, 82% 90%, 73% 90%, 66% 98%, 57% 95%, 50% 100%, 42% 96%, 33% 99%, 27% 92%, 18% 91%, 15% 83%, 7% 79%, 7% 70%, 1% 64%, 5% 56%, 0 49%, 4% 41%, 2% 32%, 9% 26%, 10% 18%, 19% 15%, 23% 7%, 32% 7%, 40% 1%); box-shadow: 0 5px 1px #0008; }
+    .badge:before { content: ''; position: absolute; inset: 12px; border: 2px solid #ffffffaa; border-radius: 50%; background: #ffffff13; box-shadow: inset 0 0 22px #ffffff55; }
+    .badge span, .badge strong { position: relative; z-index: 1; display: block; }
+    .badge span { font-weight: 700; font-size: 23px; line-height: 1; }
+    .badge strong { font-family: Anton, Impact, sans-serif; font-weight: 400; font-size: 47px; line-height: 1.12; letter-spacing: 1px; }
+    .clicks { left: 5px; background: radial-gradient(circle, #77e8ee, #6283c8 68%, #7459a9); }
+    button.clicks { padding: 0; appearance: none; cursor: pointer; }
+    button.clicks:hover { filter: brightness(1.13); }
+    button.clicks:focus-visible { outline: 4px solid #fff782; outline-offset: 4px; }
+    .clicks.bump { animation: click-bump .3s ease-out; }
+    .click-pop { position: absolute; z-index: 9; left: 61px; top: -38px; color: #fff550; font: 31px Anton, Impact, sans-serif; -webkit-text-stroke: 1.5px #101020; pointer-events: none; animation: click-pop .7s ease-out forwards; }
+    @keyframes click-bump { 50% { transform: scale(1.12) rotate(-5deg); } }
+    @keyframes click-pop { from { transform: translateY(12px) scale(.7); opacity: 0; } 25% { opacity: 1; } to { transform: translateY(-32px) scale(1.2); opacity: 0; } }
+    .impressions { left: 184px; background: radial-gradient(circle, #ffa45d, #e35542 72%, #af3446); }
+    .ctr { left: 378px; background: radial-gradient(circle, #ecef66, #b8ad3c 70%, #796d33); }
+    .position { left: 605px; background: radial-gradient(circle, #fff469, #e98a4c 71%, #b55643); }
+    .question { position: absolute; left: 539px; top: 5px; font: 82px Anton, Impact, sans-serif; color: #090c0f; text-shadow: 3px 3px #d7f5f2; }
+    .pos-ribbon { position: absolute; left: 585px; top: 91px; width: 196px; height: 35px; background: #ffe9a0; border: 3px solid #090809; clip-path: polygon(0 0, 100% 0, 93% 50%, 100% 100%, 0 100%, 8% 50%); text-align: center; font-weight: 800; font-size: 18px; line-height: 27px; }
+    .notice { position: absolute; z-index: 6; top: 190px; right: 62px; width: 262px; min-height: 84px; padding: 8px 16px 6px 10px; border: 3px solid #17111b; background: #00167a; color: white; box-shadow: inset 2px 2px #8ba8f3, 3px 3px 0 #100e13; font-size: 20px; font-weight: 700; line-height: .95; }
+    .notice b { color: #ffe034; }
+    .notice-close { position: absolute; right: 5px; top: 5px; padding: 0; width: 20px; height: 20px; border: 2px solid #090815; background: #d7d8d4; font: 15px/14px Arial; }
+    .notice-hand { position: absolute; font-size: 39px; right: 9px; bottom: -42px; filter: drop-shadow(2px 2px #000); }
+    .alien-head { position: absolute; z-index: 7; right: 2px; top: 196px; width: 76px; height: 99px; transform: rotate(12deg); background: radial-gradient(circle at 35% 26%, #9dff86, #48d681 75%); border: 4px solid #07121a; border-radius: 48% 48% 52% 52%; box-shadow: inset -8px -8px #119f75, 3px 4px #0007; }
+    .alien-head:before, .alien-head:after { content: ''; position: absolute; width: 17px; height: 28px; top: 36px; background: #050a0d; border-radius: 60% 30% 55% 35%; }
+    .alien-head:before { left: 8px; transform: rotate(-25deg); box-shadow: inset 5px 4px 0 -2px #fff; }
+    .alien-head:after { right: 8px; transform: rotate(25deg); }
+    .alien-head i { position: absolute; left: 28px; top: 70px; width: 18px; height: 7px; border-bottom: 2px solid #102c24; border-radius: 50%; }
+    .chart { position: absolute; z-index: 2; left: 22px; top: 360px; width: 1049px; height: 270px; border: 5px solid #100817; outline: 4px solid #f247d9; background: #d2fafa; box-shadow: inset 3px 3px #fff, 4px 5px 0 #16101a; }
+    .chart svg { display: block; width: 100%; height: 100%; }
+    .chart-line.redraw { stroke-dasharray: 4000; animation: line-reveal .65s ease-out; }
+    @keyframes line-reveal { from { stroke-dashoffset: 4000; } to { stroke-dashoffset: 0; } }
+    .chart-label { position: absolute; padding: 1px 8px; background: #fff5a2; border: 2px solid #16121a; box-shadow: 2px 2px #121212; font-size: 21px; font-weight: 700; }
+    .chart-label.left { left: 71px; top: 148px; }
+    .chart-label.right { right: 170px; top: 161px; }
+    .mountain-readout { position: absolute; right: 18px; top: 9px; padding: 3px 8px; border: 2px solid #164627; background: #e7ffbb; color: #16572b; font-size: 22px; font-weight: 800; box-shadow: 2px 2px #13191b; }
+    .date { position: absolute; bottom: 10px; font-size: 20px; }
+    .date.start { left: 27px; } .date.middle { right: 113px; } .date.end { right: 6px; }
+    .sticker { position: absolute; z-index: 5; user-select: none; filter: drop-shadow(3px 3px 0 #111); }
+    .pixel-emoji { display: inline-block; width: 1em; height: 1em; vertical-align: -.13em; image-rendering: crisp-edges; image-rendering: pixelated; pointer-events: none; }
+    .sun { left: 44px; top: 363px; font-size: 88px; transform: rotate(-14deg); transition: left .65s ease, top .65s ease; }
+    .taco { left: 190px; top: 385px; font-size: 76px; transform: rotate(-18deg); }
+    .floppy { left: 203px; top: 552px; font-size: 85px; transform: rotate(-18deg); }
+    .skater { right: 192px; top: 367px; font-size: 88px; transform: rotate(13deg); }
+    .skate-board { display: inline-block; transform-origin: center; backface-visibility: visible; }
+    .skate-board.flipping { animation: kickflip .9s cubic-bezier(.25,.55,.22,1) both; }
+    @keyframes kickflip { 0% { transform: translateY(0) rotateY(0) rotateZ(0); } 25% { transform: translateY(-42px) rotateY(160deg) rotateZ(-24deg); } 55% { transform: translateY(-55px) rotateY(390deg) rotateZ(18deg); } 82% { transform: translateY(-16px) rotateY(650deg) rotateZ(340deg); } 100% { transform: translateY(0) rotateY(720deg) rotateZ(360deg); } }
+    .lightning { right: 65px; top: 334px; font-size: 60px; transform: rotate(16deg); }
+    .star { position: absolute; z-index: 5; color: #ffdc26; font-size: 47px; line-height: 1; -webkit-text-stroke: 2px #100616; filter: drop-shadow(2px 2px #000); }
+    .star.s1 { left: 2px; top: 451px; } .star.s2 { right: 2px; top: 454px; } .star.s3 { left: 6px; top: 395px; color: #bf74de; } .star.s4 { right: 10px; top: 393px; color: #bf74de; } .star.s5 { right: 257px; top: 604px; color: #ef66b7; }
+    .bolt-small { position: absolute; z-index: 5; color: #ffe23b; font-size: 40px; -webkit-text-stroke: 2px #090712; }
+    .bolt-small.b1 { left: 0; top: 506px; } .bolt-small.b2 { right: 1px; top: 508px; }
+    .dialog { position: absolute; z-index: 8; top: 350px; left: 330px; width: 448px; height: 288px; background: #c3c3c3; border: 3px solid #1d1c21; box-shadow: inset 3px 3px #fff, inset -3px -3px #7b7b7b, 4px 5px 0 #252026; }
+    .dialog-title { height: 30px; padding: 2px 5px; display: flex; align-items: center; justify-content: space-between; background: #050a7d; color: white; font-size: 21px; font-weight: 800; line-height: 1; }
+    .dialog-title button { width: 23px; height: 23px; padding: 0; border: 2px solid #17151a; background: #cecece; box-shadow: inset 2px 2px #fff; color: #111; font: 18px/17px Arial; }
+    .dialog-content { position: relative; height: 251px; padding: 5px 12px; font-size: 19px; }
+    .field-label { margin: 0 0 2px; }
+    .choices { display: grid; gap: 2px; width: 187px; }
+    .choice { display: flex; align-items: center; gap: 7px; height: 31px; padding: 0 4px; cursor: pointer; }
+    .choice.selected { background: linear-gradient(90deg, #e894ed99, transparent); }
+    .choice input { margin: 0; width: 17px; height: 17px; accent-color: #101010; }
+    .choice .camera { font-size: 25px; margin-left: 4px; }
+    .burst { position: absolute; right: 15px; top: 13px; width: 240px; height: 91px; display: grid; place-items: center; background: #db1ee6; clip-path: polygon(0 50%, 13% 43%, 5% 28%, 23% 32%, 22% 7%, 38% 25%, 46% 0, 54% 24%, 69% 6%, 68% 29%, 91% 18%, 80% 41%, 100% 50%, 82% 62%, 93% 85%, 67% 70%, 64% 97%, 51% 75%, 43% 100%, 37% 73%, 14% 87%, 21% 64%); filter: drop-shadow(0 0 7px #b000cc); }
+    .burst:before { content: ''; position: absolute; inset: 12px; background: #923df1; clip-path: inherit; }
+    .burst strong { position: relative; z-index: 1; color: #6aff49; -webkit-text-stroke: 1.5px #050407; font: 36px Anton, Impact, sans-serif; letter-spacing: -1px; text-shadow: 3px 3px #090909; }
+    .help { position: absolute; right: 10px; bottom: 9px; width: 251px; height: 104px; padding: 5px 22px 5px 5px; border: 2px inset #888; background: white; font: 15px/16px Arial, sans-serif; overflow: hidden; }
+    .help:after { content: '▲\A\A\A ▼'; white-space: pre; position: absolute; right: 0; top: 0; width: 18px; height: 100%; text-align: center; border-left: 2px solid #888; background: #d7d7d7; font: 14px/18px Arial; }
+    .levels { position: absolute; z-index: 3; left: 24px; right: 20px; bottom: 6px; height: 107px; border: 4px solid #16131a; background: #c4c4c4; box-shadow: inset 3px 3px #fff, 3px 4px #0b0711; }
+    .levels h2 { margin: 0 10px; font: 26px Anton, Impact, sans-serif; color: #fff; -webkit-text-stroke: 1.5px #111; text-shadow: 2px 2px #000; }
+    .drag-hint { position: absolute; right: 15px; top: 6px; padding: 2px 8px; border: 2px solid #101b28; background: #ffec68; color: #102f43; font-size: 16px; font-weight: 800; line-height: 1; box-shadow: 2px 2px #1d1721; }
+    .progress { position: absolute; left: 12px; right: 13px; top: 47px; height: 22px; border: 3px solid #0c0b13; border-radius: 6px; background: linear-gradient(90deg, #00ded5, #2dccdf 28%, #8368e6 57%, #e342e8 100%); box-shadow: inset 2px 2px #edfffc; cursor: pointer; touch-action: none; }
+    .tick { position: absolute; top: 41px; width: 23px; height: 32px; border: 3px solid #15101a; background: #53dce1; pointer-events: none; }
+    .tick.one { left: 112px; } .tick.two { left: 50%; background: #9285e0; } .tick.three { right: 139px; background: #dd53dc; }
+    .lvl { position: absolute; bottom: 3px; font-weight: 800; font-size: 21px; line-height: 1; }
+    .lvl.one { left: 15px; } .lvl.two { left: 43%; } .lvl.three { right: 11px; padding: 2px 5px; border: 3px solid #161017; color: #f7e745; background: #120d1a; }
+    .car { position: absolute; z-index: 4; left: 59%; top: 3px; padding: 0; border: 0; background: none; font-size: 45px; line-height: 1; transform: scaleX(-1); filter: drop-shadow(2px 2px #111); }
+    .red-car { position: absolute; z-index: 3; top: 20px; font-size: 42px; line-height: 1; transform: scaleX(-1); pointer-events: none; filter: drop-shadow(2px 2px #631c36); }
+    .race-active .progress { box-shadow: inset 2px 2px #edfffc, 0 0 13px #fff68a; }
+    .car:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
+    .sticker, .star, .bolt-small, .car { cursor: grab; touch-action: none; user-select: none; }
+    .sticker:active, .star:active, .bolt-small:active, .car:active { cursor: grabbing; }
+    .alien-head { padding: 0; cursor: pointer; transition: filter .2s, scale .2s; }
+    .alien-head:hover { filter: drop-shadow(0 0 10px #a4ff96); scale: 1.06; }
+    .screen.beach-mode { background: linear-gradient(180deg, #58cfe8 0%, #a8ecdf 30%, #ffd1a3 46%, #57d7ce 47%, #27acc1 69%, #ffe5ab 70%, #eec47d 100%); }
+    .screen.beach-mode:before { opacity: .4; background: radial-gradient(ellipse at 28% 70%, #ffffffaa 0 2%, transparent 3% 100%), repeating-radial-gradient(ellipse at 50% 65%, transparent 0 26px, #fff8 28px 31px, transparent 33px 64px); background-size: 280px 120px, 340px 160px; }
+    .beach-mode .sun { left: 949px; top: -28px; z-index: 1; font-size: 113px; }
+    .beach-mode .stat-strip { background: linear-gradient(90deg, #ffbf99, #ffe6a8 50%, #8be7d8); }
+    .beach-mode .chart { background: linear-gradient(#c6f3e5 0 46%, #63d9d1 47% 63%, #efdda6 64%); border-color: #005b6a; outline-color: #ff856f; }
+    .beach-mode .dialog { background: #f8e3b4; }
+    .beach-mode .dialog-title { background: #e36576; }
+    .beach-mode .notice { background: #ed6b79; }
+    .beach-mode .levels { background: #f6d69b; }
+    .beach-mode .levels h2:after { content: '  ✦ BEACH EDITION'; color: #ffe85b; }
+    .beach-mode .progress { background: linear-gradient(90deg, #ffe18c, #69d3d4 45%, #3aa6c5 75%, #e879ac); }
+    .beach-mode .reset { color: #a42148; }
+    .beach-sticker { visibility: hidden; pointer-events: none; }
+    .beach-mode .beach-sticker { visibility: visible; pointer-events: auto; }
+    .palm { left: 3px; top: 345px; font-size: 73px; transform: rotate(-12deg); }
+    .shell { left: 114px; top: 567px; font-size: 45px; transform: rotate(18deg); }
+    .crab { right: 38px; top: 556px; font-size: 47px; transform: rotate(-9deg); }
+    .ufo { position: absolute; z-index: 18; width: 142px; height: 100px; pointer-events: none; animation: alien-flight 2.5s cubic-bezier(.24,.64,.36,1) forwards; filter: drop-shadow(0 6px 4px #12252a99); }
+    .ufo-dome { position: absolute; left: 39px; top: 2px; width: 64px; height: 66px; border: 4px solid #172633; border-radius: 60% 60% 20% 20%; background: linear-gradient(130deg, #d5ffffcc, #3df0b9aa); }
+    .ufo-pilot { position: absolute; left: 47px; top: 10px; font-size: 42px; line-height: 1; }
+    .ufo-body { position: absolute; left: 3px; top: 48px; width: 136px; height: 46px; border: 4px solid #172633; border-radius: 50%; background: radial-gradient(ellipse at 50% 20%, #f4d9ff 0 25%, #ba65d9 45%, #4d4198 85%); box-shadow: inset 0 -9px #362d72; }
+    .ufo-lights { position: absolute; left: 23px; top: 71px; width: 96px; height: 10px; border-radius: 50%; background: repeating-radial-gradient(circle at 8px 5px, #ffec5a 0 4px, transparent 5px 28px); background-size: 29px 10px; }
+    .ufo-beam { position: absolute; left: 39px; top: 82px; width: 64px; height: 75px; background: linear-gradient(#b6ffb288, transparent); clip-path: polygon(37% 0, 63% 0, 100% 100%, 0 100%); }
+    @keyframes alien-flight { 0% { transform: translate(0, 0) rotate(-9deg) scale(.65); opacity: 1; } 18% { transform: translate(-60px, -20px) rotate(7deg) scale(1.08); } 55% { transform: translate(-280px, -165px) rotate(-14deg) scale(.9); opacity: 1; } 100% { transform: translate(-770px, -530px) rotate(17deg) scale(.32); opacity: 0; } }
+    .floppy:focus-visible { outline: 4px solid #fff37c; outline-offset: 6px; }
+    .lightning:focus-visible { outline: 4px solid #fff37c; outline-offset: 6px; }
+    .lightning-strike { position: absolute; z-index: 27; inset: 0; pointer-events: none; }
+    .lightning-strike:before { content: ''; position: absolute; inset: 0; background: #f6faff; animation: lightning-flash .8s steps(1) forwards; }
+    .lightning-strike svg { position: absolute; width: 100%; height: 100%; }
+    .lightning-strike path { fill: none; stroke: #fff6bd; stroke-width: 9; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 1200; stroke-dashoffset: 1200; filter: drop-shadow(0 0 8px #7deaff) drop-shadow(0 0 18px #d787ff); animation: lightning-drop .3s ease-in forwards; }
+    .lightning-impact { position: absolute; font-size: 72px; opacity: 0; animation: lightning-boom .65s .19s ease-out forwards; }
+    @keyframes lightning-flash { 0%, 18%, 45% { opacity: 0; } 8%, 28% { opacity: .65; } 65%, 100% { opacity: 0; } }
+    @keyframes lightning-drop { to { stroke-dashoffset: 0; } }
+    @keyframes lightning-boom { 10% { transform: scale(.5); opacity: 1; } 100% { transform: scale(1.6); opacity: 0; } }
+    .movie-overlay { position: absolute; z-index: 30; inset: 0; display: grid; place-items: center; background: #090818cb; backdrop-filter: blur(3px); }
+    .movie-tv { position: relative; width: 650px; height: 477px; border: 9px solid #11111c; border-radius: 42px; background: linear-gradient(145deg, #6d6375, #352e45 60%, #1b1d2d); box-shadow: inset 7px 7px #b4a9b6, inset -9px -9px #15101a, 10px 13px 0 #0009, 0 0 40px #e45bfc77; animation: tv-pop .42s cubic-bezier(.2,1.5,.5,1) both; }
+    .movie-tv:after { content: 'LEVEL 10 CINEMA'; position: absolute; bottom: 12px; left: 32px; color: #ffd46e; font: 19px Anton, Impact, sans-serif; letter-spacing: 2px; text-shadow: 2px 2px #0b0a15; }
+    .movie-close { position: absolute; z-index: 4; right: 12px; top: 10px; width: 34px; height: 34px; padding: 0; border: 3px solid #17111f; border-radius: 5px; background: #ff86cb; color: #160d1d; font: 25px/25px Arial; box-shadow: inset 2px 2px #ffe0f5, 2px 2px #090711; }
+    .film-screen { position: absolute; left: 27px; top: 28px; width: 500px; height: 366px; overflow: hidden; border: 13px solid #14151f; border-radius: 70px 70px 55px 55px / 36px 36px 52px 52px; background: #0e1425; box-shadow: inset 0 0 33px #000, 4px 4px #8c8192; }
+    .film-screen:after { content: ''; position: absolute; z-index: 5; inset: 0; pointer-events: none; background: repeating-linear-gradient(to bottom, #0000 0 3px, #0711203d 4px 5px), radial-gradient(ellipse at center, transparent 45%, #0008); }
+    .tv-static { position: absolute; inset: 0; background: repeating-linear-gradient(0deg, #d8e4ec 0 2px, #28313e 3px 4px, #858294 5px 7px); opacity: .75; animation: tv-static .13s steps(3) infinite; }
+    .film-screen.playing .tv-static { display: none; }
+    .film-scene { position: absolute; inset: 0; visibility: hidden; overflow: hidden; background: linear-gradient(#78dbe7 0 54%, #e3aeb5 55% 61%, #e0c477 62% 100%); animation: film-day-night 10s linear infinite; }
+    .film-screen.playing .film-scene { visibility: visible; }
+    .film-sun { position: absolute; left: 46px; top: 25px; font-size: 68px; animation: film-sun-bob 3s ease-in-out infinite; }
+    .film-hill { position: absolute; bottom: 58px; width: 420px; height: 145px; border-radius: 50% 50% 0 0; background: #4fbaa6; }
+    .film-hill.one { left: -125px; } .film-hill.two { right: -160px; bottom: 48px; background: #318d9d; }
+    .film-road { position: absolute; left: 0; right: 0; bottom: 0; height: 76px; background: linear-gradient(#514870, #25293f); border-top: 9px solid #f8c87f; }
+    .film-road:after { content: ''; position: absolute; left: 0; right: 0; top: 37px; height: 6px; background: repeating-linear-gradient(90deg, #fff2a4 0 36px, transparent 37px 68px); animation: road-run .4s linear infinite; }
+    .film-palm { position: absolute; right: 20px; bottom: 76px; font-size: 95px; }
+    .film-rider { position: absolute; z-index: 3; left: -130px; bottom: 68px; display: grid; justify-items: center; font-size: 62px; line-height: .8; filter: drop-shadow(3px 3px #152342); animation: rider-cross 10s linear infinite; }
+    .film-rider span:last-child { font-size: 74px; }
+    .film-title, .film-end { position: absolute; z-index: 4; left: 0; right: 0; text-align: center; font: 32px Anton, Impact, sans-serif; color: #ffed61; -webkit-text-stroke: 1px #101326; text-shadow: 3px 3px #0d1330; }
+    .film-title { top: 19px; animation: title-show 10s linear infinite; }
+    .film-end { top: 115px; opacity: 0; animation: end-show 10s linear infinite; }
+    .tv-panel { position: absolute; right: 18px; top: 70px; width: 82px; color: #e9d8e5; text-align: center; font: 16px Anton, Impact, sans-serif; letter-spacing: 1px; }
+    .tv-knob { display: block; width: 61px; height: 61px; margin: 17px auto; border: 6px solid #11111c; border-radius: 50%; background: conic-gradient(#aa9ba7 0 40%, #343043 41% 55%, #a99aa9 56%); box-shadow: inset 2px 2px #fff7, 3px 3px #111; }
+    .tv-led { display: block; width: 12px; height: 12px; margin: 25px auto 9px; border-radius: 50%; background: #ff435d; box-shadow: 0 0 11px #ff435d; }
+    .film-screen.playing ~ .tv-panel .tv-led { background: #65ff7b; box-shadow: 0 0 11px #65ff7b; }
+    .vhs-slot { position: absolute; left: 236px; bottom: 14px; width: 170px; height: 14px; border: 3px solid #aaa0ae; border-radius: 8px; background: #08070c; box-shadow: inset 0 2px #000; }
+    .vhs-cassette { position: absolute; z-index: 35; width: 132px; height: 82px; border: 6px solid #0a0b13; border-radius: 8px; background: linear-gradient(#36384b, #11131e); box-shadow: inset 3px 3px #777b91, 5px 7px #0008; pointer-events: none; }
+    .vhs-cassette:before, .vhs-cassette:after { content: ''; position: absolute; top: 20px; width: 24px; height: 24px; border: 5px dashed #edece8; border-radius: 50%; background: #0b0d17; }
+    .vhs-cassette:before { left: 11px; } .vhs-cassette:after { right: 11px; }
+    .vhs-cassette span { position: absolute; left: 35px; top: 4px; width: 52px; padding: 2px 0; background: #fff5a5; color: #12131b; text-align: center; font: 12px Anton, Impact, sans-serif; }
+    @keyframes tv-pop { from { transform: scale(.65) rotate(-7deg); opacity: 0; } to { transform: scale(1) rotate(0); opacity: 1; } }
+    @keyframes tv-static { to { transform: translateY(7px); } }
+    @keyframes film-day-night { 0%, 44% { filter: hue-rotate(0deg) brightness(1); } 65%, 92% { filter: hue-rotate(150deg) brightness(.45); } 100% { filter: hue-rotate(0deg) brightness(1); } }
+    @keyframes film-sun-bob { 50% { transform: translateY(11px) rotate(10deg); } }
+    @keyframes road-run { to { background-position: -68px 0; } }
+    @keyframes rider-cross { 0% { transform: translateX(0); } 75%, 100% { transform: translateX(650px); } }
+    @keyframes title-show { 0%, 18% { opacity: 1; } 27%, 100% { opacity: 0; } }
+    @keyframes end-show { 0%, 78% { opacity: 0; } 85%, 97% { opacity: 1; } 100% { opacity: 0; } }
+    @media (prefers-reduced-motion: reduce) { .ufo { animation-duration: .5s; } .sun { transition: none; } }
+    [hidden] { display: none !important; }
+</style><script src="https://media.stronglify.com/tailwind-play-3.4.17.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""/>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&amp;family=Barlow+Condensed:wght@500;600;700;800;900&amp;display=swap" rel="stylesheet"/></head>
+<body>
+  <script>
+document.addEventListener('DOMContentLoaded', () => {
+    const emojiPattern = /(🌞|🌮|💾|🛹|⚡|🌴|🐚|🦀|🚙|🚗|👽|📷|☝|💥|🏁)/gu;
+    const pixelEmojiCache = new Map();
+    function pixelEmoji(symbol) {
+      if (!pixelEmojiCache.has(symbol)) {
+        const source = document.createElement('canvas');
+        source.width = 20;
+        source.height = 20;
+        const context = source.getContext('2d', { willReadFrequently: true });
+        context.font = '18px "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif';
+        context.textAlign = 'center';
+        context.textBaseline = 'alphabetic';
+        context.fillText(symbol, 10, 17);
+        const pixels = context.getImageData(0, 0, 20, 20);
+        for (let index = 0; index < pixels.data.length; index += 4) {
+          if (pixels.data[index + 3] < 80) { pixels.data[index + 3] = 0; continue; }
+          pixels.data[index] = Math.round(pixels.data[index] / 255 * 7) * 255 / 7;
+          pixels.data[index + 1] = Math.round(pixels.data[index + 1] / 255 * 7) * 255 / 7;
+          pixels.data[index + 2] = Math.round(pixels.data[index + 2] / 255 * 3) * 85;
+          pixels.data[index + 3] = 255;
+        }
+        context.putImageData(pixels, 0, 0);
+        pixelEmojiCache.set(symbol, source);
+      }
+      const canvas = document.createElement('canvas');
+      canvas.width = 20;
+      canvas.height = 20;
+      canvas.className = 'pixel-emoji';
+      canvas.dataset.emoji = symbol;
+      canvas.setAttribute('aria-hidden', 'true');
+      canvas.getContext('2d').drawImage(pixelEmojiCache.get(symbol), 0, 0);
+      return canvas;
+    }
+    function pixelateEmojiText(node) {
+      if (!node.nodeValue || !emojiPattern.test(node.nodeValue)) { emojiPattern.lastIndex = 0; return; }
+      emojiPattern.lastIndex = 0;
+      const text = node.nodeValue;
+      const replacement = document.createDocumentFragment();
+      let end = 0;
+      for (const match of text.matchAll(emojiPattern)) {
+        if (match.index > end) replacement.append(document.createTextNode(text.slice(end, match.index)));
+        replacement.append(pixelEmoji(match[0]));
+        end = match.index + match[0].length;
+      }
+      if (end < text.length) replacement.append(document.createTextNode(text.slice(end)));
+      node.replaceWith(replacement);
+    }
+    function pixelateEmojis(root) {
+      if (root.nodeType === Node.TEXT_NODE) { pixelateEmojiText(root); return; }
+      if (root.nodeType !== Node.ELEMENT_NODE || root.matches('script, style, canvas')) return;
+      const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
+      const nodes = [];
+      while (walker.nextNode()) {
+        const node = walker.currentNode;
+        if (!node.parentElement.closest('script, style, canvas')) nodes.push(node);
+      }
+      nodes.forEach(pixelateEmojiText);
+    }
+    pixelateEmojis(document.body);
+    new MutationObserver(records => {
+      for (const record of records) {
+        if (record.type === 'characterData') pixelateEmojiText(record.target);
+        else for (const node of record.addedNodes) pixelateEmojis(node);
+      }
+    }).observe(document.body, { childList: true, characterData: true, subtree: true });
+    const viewport = document.getElementById('viewport');
+    function fitMonitor() {
+      const scale = Math.min((innerWidth - 24) / 1200, (innerHeight - 24) / 850, 1);
+      viewport.style.transform = `scale(${Math.max(scale, 0.1)})`;
+      viewport.style.margin = `${(850 * scale - 850) / 2}px ${(1200 * scale - 1200) / 2}px`;
+    }
+    addEventListener('resize', fitMonitor);
+    fitMonitor();
+    const dialog = document.getElementById('dialog');
+    const periodData = {
+      '24 hours': { values: [2, 5, 3, 7, 4, 9, 6, 10, 7, 12, 9, 13, 8, 14, 11], impressions: '4.1K', ctr: '2.9%', dates: ['00:00', '12:00', '23:59'], color: '#0a9db4' },
+      '7 days': { values: [2, 3, 4, 3, 6, 5, 8, 7, 10, 8, 12, 10, 13, 11, 14], impressions: '5.2K', ctr: '2.3%', dates: ['Mon', 'Thu', 'Sun'], color: '#865bcb' },
+      '28 days': { values: [1, 1, 1.2, 1, 1.3, 1.1, 1.4, 2, 1.5, 2, 14, 7, 12, 6, 10], impressions: '5.8K', ctr: '2%', dates: ['8/24/26', '9/11/26', '9/20/26'], color: '#405cac' },
+      '3 months': { values: [2, 3, 2.5, 4, 5, 4.5, 7, 6, 8.5, 7, 10, 9, 12, 11, 14], impressions: '15.4K', ctr: '1.8%', dates: ['6/22/26', '8/01/26', '9/20/26'], color: '#dc5297' },
+      '6 months': { values: [1, 3, 2, 5, 4, 6, 5, 9, 7, 8, 11, 9, 13, 12, 15], impressions: '29.1K', ctr: '2.4%', dates: ['3/20/26', '6/20/26', '9/20/26'], color: '#23a69a' },
+      '1 year': { values: [2, 2.5, 4, 3, 5, 7, 6, 8, 9, 7, 10, 12, 11, 13, 15], impressions: '50.2K', ctr: '2.6%', dates: ['9/20/25', '3/20/26', '9/20/26'], color: '#a75ae4' },
+      'All time': { values: [0.2, 14, 4, 7, 5, 9, 8, 10, 9, 11, 10, 12, 11, 13, 15], impressions: '∞', ctr: '3.1%', dates: ['BIG BANG', 'GALAXIES', 'NOW'], color: '#ed8a3d' }
+    };
+    function updatePeriod(label) {
+      const data = periodData[label];
+      if (!data) return;
+      const bigBang = label === 'All time';
+      const reportScreen = document.querySelector('.screen');
+      reportScreen.classList.toggle('big-bang-mode', bigBang);
+      if (bigBang) {
+        reportScreen.classList.remove('beach-mode');
+        document.getElementById('sun-mode').setAttribute('aria-pressed', 'false');
+        document.querySelector('.subtitle').textContent = 'From the Big Bang to Now!';
+        document.querySelector('.sun').resetPosition();
+        moveCar(0, false);
+      } else if (!reportScreen.classList.contains('beach-mode')) {
+        document.querySelector('.subtitle').textContent = 'Your Upgrade Is Here!';
+      }
+      const plot = values => values.map((value, index) => `${55 + index * 957 / (values.length - 1)},${220 - value * 12}`).join(' ');
+      const lines = [document.getElementById('primary-line'), document.getElementById('secondary-line')];
+      lines[0].setAttribute('points', plot(data.values));
+      lines[1].setAttribute('points', plot(data.values.map((value, index) => Math.min(15, value * .72 + Math.sin(index * 2) * 1.2 + 1))));
+      lines[0].setAttribute('stroke', data.color);
+      lines[1].setAttribute('stroke', '#6a85be');
+      lines.forEach(line => { line.classList.remove('redraw'); void line.getBoundingClientRect(); line.classList.add('redraw'); });
+      document.getElementById('impressions-value').textContent = data.impressions;
+      document.getElementById('ctr-value').textContent = data.ctr;
+      document.querySelector('.chart-label.left').textContent = data.dates[0];
+      document.querySelector('.chart-label.right').textContent = data.dates[1];
+      document.querySelector('.date.start').textContent = data.dates[0];
+      document.querySelector('.date.middle').textContent = data.dates[1];
+      document.querySelector('.date.end').textContent = data.dates[2];
+      document.querySelector('.chart').setAttribute('aria-label', `Performance trend for ${label}`);
+      document.getElementById('mountain-fill').setAttribute('d', '');
+      document.getElementById('mountain-ridge').setAttribute('points', '');
+      document.getElementById('mountain-peak').setAttribute('hidden', '');
+      document.getElementById('mountain-readout').hidden = true;
+      dialog.hidden = true;
+    }
+    document.getElementById('open-dialog').addEventListener('click', () => { dialog.hidden = false; });
+    document.getElementById('close-dialog').addEventListener('click', () => { dialog.hidden = true; });
+    document.querySelector('.notice-close').addEventListener('click', () => { document.getElementById('notice').hidden = true; });
+    document.querySelectorAll('input[name="search-type"]').forEach(input => input.addEventListener('change', () => {
+      document.querySelectorAll('.choice').forEach(choice => choice.classList.toggle('selected', choice.contains(input) && input.checked));
+      document.querySelector('.select-button .truncate').textContent = `Search type: ${input.value}`;
+      screen.dataset.searchType = input.value.toLowerCase().replaceAll(' ', '-');
+      const wasBigBang = screen.classList.contains('big-bang-mode');
+      screen.classList.remove('big-bang-mode');
+      if (screen.classList.contains('beach-mode')) {
+        screen.classList.remove('beach-mode');
+        document.getElementById('sun-mode').setAttribute('aria-pressed', 'false');
+        document.querySelector('.subtitle').textContent = 'Your Upgrade Is Here!';
+        sun.resetPosition();
+      } else if (wasBigBang) document.querySelector('.subtitle').textContent = 'Your Upgrade Is Here!';
+    }));
+    const moreButton = document.getElementById('more-button');
+    const moreMenu = document.getElementById('more-menu');
+    const closeMore = () => { moreMenu.hidden = true; moreButton.setAttribute('aria-expanded', 'false'); };
+    document.querySelectorAll('.range-button:not(.more-button)').forEach(button => button.addEventListener('click', () => {
+      document.querySelectorAll('.range-button').forEach(item => {
+        const selected = item === button;
+        item.classList.toggle('active', selected);
+        item.setAttribute('aria-pressed', String(selected));
+      });
+      moreButton.querySelector('.more-label').textContent = 'More';
+      closeMore();
+      updatePeriod(button.textContent.trim());
+    }));
+    moreButton.addEventListener('click', () => {
+      const open = moreMenu.hidden;
+      moreMenu.hidden = !open;
+      moreButton.setAttribute('aria-expanded', String(open));
+    });
+    moreMenu.querySelectorAll('.more-option').forEach(option => option.addEventListener('click', () => {
+      document.querySelectorAll('.range-button').forEach(button => {
+        button.classList.toggle('active', button === moreButton);
+        button.setAttribute('aria-pressed', String(button === moreButton));
+      });
+      moreButton.querySelector('.more-label').textContent = option.dataset.label;
+      closeMore();
+      updatePeriod(option.textContent.trim());
+    }));
+    document.addEventListener('pointerdown', event => {
+      if (!event.target.closest('.more-wrap')) closeMore();
+    });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape') closeMore();
+    });
+    const screen = document.querySelector('.screen');
+    const clicksBadge = document.getElementById('clicks-badge');
+    const clickCount = document.getElementById('click-count');
+    let pointerStart = null;
+    document.addEventListener('pointerdown', event => {
+      pointerStart = { x: event.clientX, y: event.clientY };
+    }, true);
+    document.addEventListener('click', event => {
+      if (event.detail > 0 && pointerStart && Math.hypot(event.clientX - pointerStart.x, event.clientY - pointerStart.y) > 6) return;
+      const next = Number(clickCount.textContent) + 1;
+      clickCount.textContent = next;
+      clicksBadge.setAttribute('aria-label', `Clicks: ${next}. Click anywhere to increase`);
+      clicksBadge.classList.remove('bump');
+      void clicksBadge.offsetWidth;
+      clicksBadge.classList.add('bump');
+      const pop = document.createElement('span');
+      pop.className = 'click-pop';
+      pop.textContent = '+1';
+      document.querySelector('.stat-strip').append(pop);
+      pop.addEventListener('animationend', () => pop.remove(), { once: true });
+    }, true);
+    const movieOverlay = document.getElementById('movie-overlay');
+    const filmScreen = document.getElementById('film-screen');
+    const floppy = document.getElementById('floppy');
+    let cassetteAnimation = null;
+    let activeCassette = null;
+    function closeMovie() {
+      cassetteAnimation?.cancel();
+      activeCassette?.remove();
+      activeCassette = null;
+      movieOverlay.hidden = true;
+      filmScreen.classList.remove('playing');
+    }
+    function playMovie() {
+      closeMovie();
+      dialog.hidden = true;
+      movieOverlay.hidden = false;
+      document.getElementById('movie-close').focus();
+      const source = floppy.getBoundingClientRect();
+      const slot = document.getElementById('vhs-slot').getBoundingClientRect();
+      const screenRect = screen.getBoundingClientRect();
+      const scale = screenRect.width / screen.offsetWidth;
+      const startX = (source.left + source.width / 2 - screenRect.left) / scale - screen.clientLeft - 66;
+      const startY = (source.top + source.height / 2 - screenRect.top) / scale - screen.clientTop - 41;
+      const endX = (slot.left + slot.width / 2 - screenRect.left) / scale - screen.clientLeft - 66;
+      const endY = (slot.top + slot.height / 2 - screenRect.top) / scale - screen.clientTop - 41;
+      const cassette = document.createElement('div');
+      cassette.className = 'vhs-cassette';
+      cassette.setAttribute('aria-hidden', 'true');
+      cassette.innerHTML = '<span>CHAOS 10</span>';
+      cassette.style.left = `${startX}px`;
+      cassette.style.top = `${startY}px`;
+      screen.append(cassette);
+      activeCassette = cassette;
+      const dx = endX - startX;
+      const dy = endY - startY;
+      cassetteAnimation = cassette.animate([
+        { transform: 'rotate(-18deg) scale(.35)', opacity: .2 },
+        { transform: `translate(${dx * .55}px, ${dy * .3 - 100}px) rotate(14deg) scale(1.1)`, opacity: 1, offset: .52 },
+        { transform: `translate(${dx}px, ${dy}px) rotate(0deg) scale(.15)`, opacity: 0 }
+      ], { duration: 1350, easing: 'cubic-bezier(.22,.65,.32,1)', fill: 'forwards' });
+      cassetteAnimation.finished.then(() => {
+        if (activeCassette !== cassette) return;
+        cassette.remove();
+        activeCassette = null;
+        if (!movieOverlay.hidden) {
+          filmScreen.classList.add('playing');
+          const scene = filmScreen.querySelector('.film-scene');
+          const replay = scene.cloneNode(true);
+          replay.querySelectorAll('canvas.pixel-emoji').forEach(canvas => canvas.getContext('2d').drawImage(pixelEmojiCache.get(canvas.dataset.emoji), 0, 0));
+          scene.replaceWith(replay);
+        }
+      }).catch(() => {});
+    }
+    document.getElementById('movie-close').addEventListener('click', closeMovie);
+    movieOverlay.addEventListener('click', event => { if (event.target === movieOverlay) closeMovie(); });
+    document.addEventListener('keydown', event => { if (event.key === 'Escape' && !movieOverlay.hidden) closeMovie(); });
+    floppy.addEventListener('keydown', event => {
+      if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); playMovie(); }
+    });
+    let activeStrike = null;
+    function strikeLightning(source) {
+      activeStrike?.remove();
+      const rect = source.getBoundingClientRect();
+      const screenRect = screen.getBoundingClientRect();
+      const scale = screenRect.width / screen.offsetWidth;
+      const x = Math.max(42, Math.min(screen.clientWidth - 42, (rect.left + rect.width / 2 - screenRect.left) / scale));
+      const y = Math.min(screen.clientHeight - 75, Math.max(290, (rect.top + rect.height / 2 - screenRect.top) / scale + 75));
+      const strike = document.createElement('div');
+      strike.className = 'lightning-strike';
+      strike.setAttribute('aria-hidden', 'true');
+      strike.innerHTML = `<svg viewBox="0 0 ${screen.clientWidth} ${screen.clientHeight}" preserveAspectRatio="none"><path d="M ${x + 60} 0 L ${x + 15} 91 L ${x + 42} 145 L ${x - 17} 240 L ${x + 11} 293 L ${x - 23} ${y - 48} L ${x} ${y}"/></svg><span class="lightning-impact">💥</span>`;
+      pixelateEmojis(strike);
+      strike.querySelector('.lightning-impact').style.left = `${x - 39}px`;
+      strike.querySelector('.lightning-impact').style.top = `${y - 42}px`;
+      screen.append(strike);
+      activeStrike = strike;
+      setTimeout(() => { strike.remove(); if (activeStrike === strike) activeStrike = null; }, 900);
+    }
+    document.getElementById('lightning').addEventListener('keydown', event => {
+      if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); strikeLightning(event.currentTarget); }
+    });
+    const skateBoard = document.querySelector('.skate-board');
+    function flipSkateboard() {
+      skateBoard.classList.remove('flipping');
+      void skateBoard.offsetWidth;
+      skateBoard.classList.add('flipping');
+    }
+    skateBoard.addEventListener('animationend', () => skateBoard.classList.remove('flipping'));
+    document.querySelectorAll('.sticker, .star, .bolt-small').forEach(item => {
+      const originalTransform = getComputedStyle(item).transform;
+      let offsetX = 0;
+      let offsetY = 0;
+      let drag = null;
+      let moved = false;
+      let lastTap = 0;
+      item.resetPosition = () => { offsetX = 0; offsetY = 0; item.style.transform = ''; };
+      item.addEventListener('pointerdown', event => {
+        event.preventDefault();
+        item.setPointerCapture(event.pointerId);
+        drag = { x: event.clientX, y: event.clientY, offsetX, offsetY };
+        moved = false;
+        item.style.zIndex = '15';
+      });
+      item.addEventListener('pointermove', event => {
+        if (!drag || !item.hasPointerCapture(event.pointerId)) return;
+        if (Math.hypot(event.clientX - drag.x, event.clientY - drag.y) > 5) moved = true;
+        const scale = screen.getBoundingClientRect().width / screen.offsetWidth;
+        offsetX = drag.offsetX + (event.clientX - drag.x) / scale;
+        offsetY = drag.offsetY + (event.clientY - drag.y) / scale;
+        item.style.transform = `translate(${offsetX}px, ${offsetY}px) ${originalTransform === 'none' ? '' : originalTransform}`;
+      });
+      const endDrag = event => {
+        if (event.type === 'pointerup' && !moved && item === floppy) playMovie();
+        if (event.type === 'pointerup' && !moved && (item.classList.contains('lightning') || item.classList.contains('bolt-small'))) strikeLightning(item);
+        if (event.type === 'pointerup' && item.classList.contains('skater') && !moved) {
+          const now = performance.now();
+          if (now - lastTap < 400) { flipSkateboard(); lastTap = 0; }
+          else lastTap = now;
+        }
+        drag = null;
+        item.style.zIndex = '';
+      };
+      item.addEventListener('pointerup', endDrag);
+      item.addEventListener('pointercancel', endDrag);
+    });
+    const car = document.getElementById('car');
+    const progress = document.querySelector('.progress');
+    const levels = document.querySelector('.levels');
+    const raceHint = document.querySelector('.drag-hint');
+    const mountainFill = document.getElementById('mountain-fill');
+    const mountainRidge = document.getElementById('mountain-ridge');
+    const mountainPeak = document.getElementById('mountain-peak');
+    const mountainReadout = document.getElementById('mountain-readout');
+    const mountainHeights = [1, 3.5, 2, 5.5, 3.2, 8, 4.5, 10.5, 6.2, 12.8, 7, 10, 5.5, 14, 8.2, 11.5, 7, 15, 10.5, 13, 9];
+    const clamp = value => Math.max(0, Math.min(1, value));
+    let carProgress = clamp((car.offsetLeft + car.offsetWidth / 2 - progress.offsetLeft) / progress.offsetWidth);
+    let carGrabOffset = 0;
+    let redCar = null;
+    let raceFrame = 0;
+    let raceCleanup = 0;
+    let racing = false;
+    function finishRace(blueWon) {
+      if (!racing) return;
+      racing = false;
+      cancelAnimationFrame(raceFrame);
+      levels.classList.remove('race-active');
+      raceHint.textContent = blueWon ? '🏁 BLUE WINS!' : '🏁 RED WINS!';
+      raceCleanup = setTimeout(() => {
+        redCar?.remove();
+        redCar = null;
+        raceHint.textContent = '↔ DRAG TO DRAW';
+      }, 2000);
+    }
+    function startRace() {
+      cancelAnimationFrame(raceFrame);
+      clearTimeout(raceCleanup);
+      redCar?.remove();
+      redCar = document.createElement('span');
+      redCar.className = 'red-car';
+      redCar.setAttribute('aria-hidden', 'true');
+      redCar.textContent = '🚗';
+      pixelateEmojis(redCar);
+      levels.append(redCar);
+      racing = true;
+      levels.classList.add('race-active');
+      raceHint.textContent = '🏁 DRAG BLUE TO WIN';
+      const start = performance.now();
+      const from = progress.offsetLeft + carProgress * progress.offsetWidth - redCar.offsetWidth / 2;
+      const distance = progress.offsetWidth * (1 - carProgress);
+      function advance(now) {
+        if (!racing) return;
+        const position = clamp((now - start) / 3500);
+        redCar.style.left = `${from + distance * position}px`;
+        if (position >= 1) finishRace(false);
+        else raceFrame = requestAnimationFrame(advance);
+      }
+      raceFrame = requestAnimationFrame(advance);
+    }
+    function drawMountain(position) {
+      const step = position * (mountainHeights.length - 1);
+      const whole = Math.floor(step);
+      const next = Math.min(whole + 1, mountainHeights.length - 1);
+      const height = mountainHeights[whole] + (mountainHeights[next] - mountainHeights[whole]) * (step - whole);
+      const point = (index, value) => `${55 + index / (mountainHeights.length - 1) * 957},${220 - value * 12}`;
+      const points = mountainHeights.slice(0, whole + 1).map((value, index) => point(index, value));
+      if (step > whole) points.push(point(step, height));
+      const edge = 55 + position * 957;
+      mountainFill.setAttribute('d', `M55,220 L${points.join(' L')} L${edge},220 Z`);
+      mountainRidge.setAttribute('points', points.join(' '));
+      mountainPeak.setAttribute('cx', edge);
+      mountainPeak.setAttribute('cy', 220 - height * 12);
+      mountainPeak.removeAttribute('hidden');
+      mountainReadout.textContent = `⛰ ALTURA ${height.toFixed(1)}`;
+      mountainReadout.hidden = false;
+    }
+    function moveCar(position, draw = true) {
+      carProgress = clamp(position);
+      car.style.left = `${progress.offsetLeft + carProgress * progress.offsetWidth - car.offsetWidth / 2}px`;
+      car.setAttribute('aria-valuenow', Math.round(carProgress * 100));
+      car.setAttribute('aria-valuetext', `${Math.round(carProgress * 100)} por ciento del recorrido`);
+      if (draw) drawMountain(carProgress);
+      if (racing && carProgress >= .98) finishRace(true);
+    }
+    function positionFromPointer(clientX, grabOffset = 0) {
+      const rect = progress.getBoundingClientRect();
+      return (clientX - grabOffset - rect.left) / rect.width;
+    }
+    moveCar(carProgress, false);
+    car.addEventListener('pointerdown', event => {
+      event.preventDefault();
+      car.setPointerCapture(event.pointerId);
+      const rect = car.getBoundingClientRect();
+      carGrabOffset = event.clientX - (rect.left + rect.width / 2);
+      startRace();
+      dialog.hidden = true;
+      drawMountain(carProgress);
+    });
+    car.addEventListener('pointermove', event => {
+      if (car.hasPointerCapture(event.pointerId)) moveCar(positionFromPointer(event.clientX, carGrabOffset));
+    });
+    progress.addEventListener('pointerdown', event => {
+      event.preventDefault();
+      progress.setPointerCapture(event.pointerId);
+      dialog.hidden = true;
+      moveCar(positionFromPointer(event.clientX));
+    });
+    progress.addEventListener('pointermove', event => {
+      if (progress.hasPointerCapture(event.pointerId)) moveCar(positionFromPointer(event.clientX));
+    });
+    car.addEventListener('keydown', event => {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        startRace();
+        dialog.hidden = true;
+        drawMountain(carProgress);
+        return;
+      }
+      const delta = event.key === 'ArrowRight' || event.key === 'ArrowUp' ? .02 : event.key === 'ArrowLeft' || event.key === 'ArrowDown' ? -.02 : 0;
+      if (delta || event.key === 'Home' || event.key === 'End') {
+        event.preventDefault();
+        dialog.hidden = true;
+        moveCar(event.key === 'Home' ? 0 : event.key === 'End' ? 1 : carProgress + delta);
+      }
+    });
+    const resetButton = document.querySelector('.reset');
+    const sunModeButton = document.getElementById('sun-mode');
+    const sun = document.querySelector('.sun');
+    function restoreFilters() {
+      screen.dataset.searchType = 'multimodal';
+      document.querySelectorAll('.range-button').forEach(button => {
+        const selected = button.textContent === '28 days';
+        button.classList.toggle('active', selected);
+        button.setAttribute('aria-pressed', String(selected));
+      });
+      moreButton.querySelector('.more-label').textContent = 'More';
+      closeMore();
+      updatePeriod('28 days');
+      const multimodal = document.querySelector('input[value="MULTIMODAL"]');
+      multimodal.checked = true;
+      document.querySelectorAll('.choice').forEach(choice => choice.classList.toggle('selected', choice.contains(multimodal)));
+      document.querySelector('.select-button .truncate').textContent = 'Search type: Web [multimodal]';
+      dialog.hidden = true;
+      sun.resetPosition();
+    }
+    sunModeButton.addEventListener('click', () => {
+      const beach = screen.classList.toggle('beach-mode');
+      sunModeButton.setAttribute('aria-pressed', String(beach));
+      document.querySelector('.subtitle').textContent = beach ? 'Your data is on vacation!' : 'Your Upgrade Is Here!';
+      restoreFilters();
+    });
+    resetButton.addEventListener('click', () => {
+      screen.classList.remove('beach-mode');
+      sunModeButton.setAttribute('aria-pressed', 'false');
+      document.querySelector('.subtitle').textContent = 'Your Upgrade Is Here!';
+      restoreFilters();
+    });
+    const alien = document.getElementById('alien');
+    alien.addEventListener('click', () => {
+      if (alien.disabled) return;
+      const alienRect = alien.getBoundingClientRect();
+      const screenRect = screen.getBoundingClientRect();
+      const scale = screenRect.width / screen.offsetWidth;
+      const ufo = document.createElement('div');
+      ufo.className = 'ufo';
+      ufo.setAttribute('aria-hidden', 'true');
+      ufo.style.left = `${(alienRect.left - screenRect.left) / scale - 31}px`;
+      ufo.style.top = `${(alienRect.top - screenRect.top) / scale - 20}px`;
+      ufo.innerHTML = '<span class="ufo-beam"></span><span class="ufo-dome"></span><span class="ufo-pilot">👽</span><span class="ufo-body"></span><span class="ufo-lights"></span>';
+      pixelateEmojis(ufo);
+      screen.append(ufo);
+      alien.disabled = true;
+      alien.style.visibility = 'hidden';
+      ufo.addEventListener('animationend', () => {
+        ufo.remove();
+        alien.disabled = false;
+        alien.style.visibility = '';
+      }, { once: true });
+    });
+    }, { once: true });
+</script><div class="viewport" id="viewport">
+    <main class="monitor" aria-label="Retro multimodal search performance report">
+      <div class="screen" data-search-type="multimodal">
+        <header class="masthead">
+          <h1>The Multimodal Report: Level 10 Chaos Unlocked!</h1>
+          <p class="subtitle">Your Upgrade Is Here!</p>
+        </header>
+
+        <nav class="toolbar" aria-label="Report filters">
+          <button class="retro-button range-button" type="button" aria-pressed="false">24 hours</button>
+          <button class="retro-button range-button" type="button" aria-pressed="false">7 days</button>
+          <button class="retro-button range-button active" type="button" aria-pressed="true">28 days</button>
+          <button class="retro-button range-button" type="button" aria-pressed="false">3 months</button>
+          <div class="more-wrap">
+            <button class="retro-button range-button more-button" id="more-button" type="button" aria-pressed="false" aria-expanded="false" aria-controls="more-menu"><span class="more-label">More</span></button>
+            <div class="more-menu" id="more-menu" hidden="">
+              <button class="more-option" type="button" data-label="6 mo">6 months</button>
+              <button class="more-option" type="button" data-label="1 year">1 year</button>
+              <button class="more-option" type="button" data-label="All">All time</button>
+            </div>
+          </div>
+          <button class="select-button" id="open-dialog" type="button"><span class="truncate">Search type: Web [multimodal]</span><span>▾</span></button>
+          <button class="retro-button add-filter" type="button">+ Add filter</button>
+          <button class="filter-icon" id="sun-mode" type="button" aria-label="Modo sol" aria-pressed="false" title="Modo sol">≡</button>
+          <button class="reset" type="button">Reset filters</button>
+        </nav>
+
+        <section class="stat-strip" aria-label="Performance statistics">
+          <button class="badge clicks" id="clicks-badge" type="button" aria-label="Clicks: 118. Click anywhere to increase"><span>Clicks</span><strong id="click-count" aria-live="polite">118</strong></button>
+          <div class="badge impressions"><span>Impressions</span><strong id="impressions-value">5.8K</strong></div>
+          <div class="badge ctr"><span>Average CTR</span><strong id="ctr-value">2%</strong></div>
+          <span class="question">?</span>
+          <div class="badge position"><span>Pos</span><strong>T.D.</strong></div>
+          <span class="pos-ribbon">POS (TOP SECRET!)</span>
+        </section>
+
+        <aside class="notice" id="notice"><button class="notice-close" type="button" aria-label="Dismiss notice">×</button><b>New!</b> Check your site&#39;s performance on multimodal web searches <span class="notice-hand">☝</span></aside>
+        <button class="alien-head" id="alien" type="button" aria-label="Launch the alien in a spaceship"><i></i></button>
+
+        <section class="chart" aria-label="Performance trend from June to September 2026">
+          <svg viewBox="0 0 1039 260" role="img" aria-label="Two performance lines remain flat until September then fluctuate">
+            <g fill="none" stroke="#a5cdd0" stroke-width="1"><path d="M50 28H1012M50 92H1012M50 156H1012M50 220H1012"></path></g>
+            <g fill="none" stroke="#526c6d" stroke-width="1"><path d="M50 20V220H1012"></path></g>
+            <g font-family="Arial" font-size="17" fill="#242729"><text x="16" y="35">15</text><text x="16" y="99">10</text><text x="25" y="163">5</text><text x="25" y="227">0</text></g>
+            <polyline class="chart-line" id="primary-line" fill="none" stroke="#405cac" stroke-width="2.5" points="55,220 298,221 482,222 642,223 760,222 822,218 866,220 878,222 884,34 896,131 907,62 919,44 938,72 955,58 969,119 989,143 1003,128"></polyline>
+            <polyline class="chart-line" id="secondary-line" fill="none" stroke="#5874bf" stroke-width="2" points="885,220 892,40 902,120 916,58 928,72 942,76 953,72 969,66 984,73 998,64 1012,80"></polyline>
+            <defs><linearGradient id="mountain-gradient" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#a7ef5f"></stop><stop offset=".55" stop-color="#4cba5d"></stop><stop offset="1" stop-color="#17825a"></stop></linearGradient></defs>
+            <path id="mountain-fill" fill="url(#mountain-gradient)" opacity=".9" d=""></path>
+            <polyline id="mountain-ridge" fill="none" stroke="#1c7137" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" points=""></polyline>
+            <circle id="mountain-peak" cx="55" cy="220" r="7" fill="#f6ffb7" stroke="#185d35" stroke-width="3" hidden=""></circle>
+          </svg>
+          <span class="mountain-readout" id="mountain-readout" hidden="">⛰ ALTURA 0.0</span>
+          <span class="chart-label left">6/22/26</span><span class="chart-label right">9/11/26</span>
+          <span class="date start">6/22/26</span><span class="date middle">9/11/26</span><span class="date end">9/20/26</span>
+        </section>
+
+        <span class="sticker sun" aria-hidden="true">🌞</span><span class="sticker taco" aria-hidden="true">🌮</span><span class="sticker floppy" id="floppy" role="button" tabindex="0" aria-label="Insert a cassette and play a movie">💾</span><span class="sticker skater" aria-hidden="true"><span class="skate-board">🛹</span></span><span class="sticker lightning" id="lightning" role="button" tabindex="0" aria-label="Call down a lightning strike">⚡</span>
+        <span class="sticker beach-sticker palm" aria-hidden="true">🌴</span><span class="sticker beach-sticker shell" aria-hidden="true">🐚</span><span class="sticker beach-sticker crab" aria-hidden="true">🦀</span>
+        <span class="star s1" aria-hidden="true">★</span><span class="star s2" aria-hidden="true">★</span><span class="star s3" aria-hidden="true">★</span><span class="star s4" aria-hidden="true">★</span><span class="star s5" aria-hidden="true">★</span>
+        <span class="bolt-small b1" aria-hidden="true">⚡</span><span class="bolt-small b2" aria-hidden="true">⚡</span>
+
+        <section class="dialog" id="dialog" aria-labelledby="dialog-title">
+          <div class="dialog-title"><span id="dialog-title">Search type</span><button id="close-dialog" type="button" aria-label="Close search type dialog">×</button></div>
+          <div class="dialog-content">
+            <p class="field-label">Search type:</p>
+            <div class="choices" role="radiogroup" aria-label="Search type">
+              <label class="choice"><input type="radio" name="search-type" value="Web"/>Web</label>
+              <label class="choice"><input type="radio" name="search-type" value="Text based"/>Text based</label>
+              <label class="choice selected"><input type="radio" name="search-type" value="MULTIMODAL" checked=""/>MULTIMODAL <span class="camera">📷</span></label>
+              <label class="choice"><input type="radio" name="search-type" value="Image"/>Image</label>
+              <label class="choice"><input type="radio" name="search-type" value="Video"/>Video</label>
+              <label class="choice"><input type="radio" name="search-type" value="News"/>News</label>
+            </div>
+            <div class="burst"><strong>MULTIMODAL</strong></div>
+            <div class="help">Web-multimodal tracks search triggered by a query that uses an image, or screenshots, photo, or screenshot. Text only queries are tracked as Web text-based.</div>
+          </div>
+        </section>
+
+        <footer class="levels" aria-label="Levels of report upgrade">
+          <h2>Levels of Report Upgrade</h2>
+          <span class="drag-hint">↔ DRAG TO DRAW</span>
+          <button class="car" id="car" type="button" role="slider" aria-label="Dibujar montaña en el gráfico" aria-valuemin="0" aria-valuemax="100" aria-valuenow="61" aria-orientation="horizontal">🚙</button>
+          <div class="progress"></div><span class="tick one"></span><span class="tick two"></span><span class="tick three"></span>
+          <span class="lvl one">Lvl 1: TEXT PEASANT</span><span class="lvl two">Lvl 5: DATA NOOB</span><span class="lvl three">Lvl 10: MULTIMODAL CHAOS BOSS</span>
+        </footer>
+        <div class="movie-overlay" id="movie-overlay" role="dialog" aria-modal="true" aria-label="Level 10 Cinema" hidden="">
+          <div class="movie-tv">
+            <button class="movie-close" id="movie-close" type="button" aria-label="Close the movie">×</button>
+            <div class="film-screen" id="film-screen">
+              <div class="tv-static"></div>
+              <div class="film-scene">
+                <span class="film-sun">🌞</span>
+                <span class="film-hill one"></span><span class="film-hill two"></span>
+                <span class="film-palm">🌴</span>
+                <div class="film-road"></div>
+                <div class="film-rider"><span>👽</span><span>🛹</span></div>
+                <div class="film-title">THE ALIEN ROAD TRIP</div>
+                <div class="film-end">TO BE CONTINUED...</div>
+              </div>
+            </div>
+            <div class="tv-panel">PLAY<span class="tv-knob"></span>VOL<span class="tv-knob"></span><span class="tv-led"></span>ON</div>
+            <div class="vhs-slot" id="vhs-slot"></div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</body></html>
